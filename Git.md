@@ -35,14 +35,14 @@ We can use `set-branches` to change the list of branches tracked by the named re
 git remote set-branches upstream master
 ```
 
-Sync a fork of a repo to keep it up-to-date with the `upstream` repo. Fetch the branches and their respective commits from the `upstream` repo. Commits to `master` will be stored in a local branch `upstream/master`.
+Sync a fork to keep it up-to-date with the `upstream` repo. Fetch the branches and their respective commits from the `upstream`. Commits to `master` will be stored in a local branch `upstream/master`.
 
 ``` bash
 git fetch upstream
-# Fetch specific branch with specific depth of commits
-git fetch --depth=3 upstream master
 # If the project has tags that have not merged to master we should do
 git fetch upstream --tags
+# Fetch specific branch with specific depth of commits
+git fetch --depth=3 upstream master
 
 # View all branches, including those from upstream
 git branch -va
