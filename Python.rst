@@ -3,6 +3,7 @@ Python Notes
 ###############################################################################
 
 
+===============================================================================
 Compile Python 3.6
 ===============================================================================
 
@@ -90,19 +91,21 @@ So we can find related executables in ``/usr/local/bin/`` and run::
 
 
 
+===============================================================================
 Linting
 ===============================================================================
 
 ::
 
-    pip install flake8 pydocstyle
-    pip install mypy
-    pip install pep8-naming
-    pip install flake8-import-order
-    pip install flake8-debugger
+    pip install --user flake8 pydocstyle
+    pip install --user mypy
+    pip install --user pep8-naming
+    pip install --user flake8-import-order
+    pip install --user flake8-debugger
 
 
 
+===============================================================================
 Shebang
 ===============================================================================
 
@@ -120,6 +123,7 @@ Define source code encoding for 2.x::
 
 
 
+===============================================================================
 PIP
 ===============================================================================
 https://pip.pypa.io/en/stable/
@@ -140,7 +144,7 @@ Uninstall all requirements::
     pip freeze --local > to_uninstall.txt
     pip uninstall -r to_uninstall.txt -y
 
-Another method::
+or::
 
     pip freeze --local | xargs pip uninstall -y
 
@@ -167,14 +171,250 @@ is optional, as is the whitespace around the commas.
 ============ ========================================
 
 
-pipdeptree
-----------
-https://github.com/naiquevin/pipdeptree
+Workflow with two requirements
+------------------------------
 
-An utility to display dependency tree.
+requirements-to-freeze.txt
+    Is used to specify our top-level dependencies, and any explicit versions
+    we need to specify.
+
+requirements.txt
+    Contains the output of ``pip freeze`` after
+    ``pip install requirements-to-freeze.txt`` has been run.
+
+Usage::
+
+    pip install -r requirements-to-freeze.txt --upgrade
+    pip freeze > requirements.txt
+
+Command line completion in bash::
+
+    $ pip completion --bash >> ~/.profile
+
+or add to ``.bashrc``::
+
+    eval "$(pip completion --bash)"
 
 
 
+===============================================================================
+pipenv
+===============================================================================
+- https://docs.pipenv.org/#pipenv-usage
+- https://github.com/kennethreitz/pipenv
+
+Pipenv is a dependency manager for Python projects. While pip can install
+Python packages, pipenv is recommended as it’s a higher-level tool that
+simplifies dependency management for common use cases. Pipenv manages
+dependencies on a per-project basis.
+
+Basic concepts:
+
+- A virtualenv will automatically be created, when one doesn’t exist.
+- When no parameters are passed to install, all packages [packages] specified
+  will be installed.
+- To initialize a specific Python venv: run ``pipenv --python 3.6``
+- Otherwise, whatever virtualenv defaults to will be the default.
+
+.. _user installation: https://pip.pypa.io/en/stable/user_guide/#user-installs
+
+Do a `user installation`_ to prevent breaking any system-wide packages::
+
+    $ pip install --user pipenv
+
+To upgrade::
+
+    $ pip install --user --upgrade pipenv
+
+To create a new virtualenv with a specific version of Python (already installed
+and on your PATH)::
+
+    $ pipenv --python 3.6
+
+Pipenv will automatically scan system for a Python that matches that given
+version.
+
+If you only have a requirements.txt file available when running
+``pipenv install``, pipenv will automatically import the contents of this file
+and create a Pipfile.
+
+For help::
+
+    $ pipenv [COMMAND] -h
+    $ pipenv --man
+
+
+Commands examples
+-----------------
+
+``pipenv install requests==2.13.0``
+    To install a specific package version.
+
+``pipenv install --dev SomePackage``
+    Install package and update [dev-packages] of ``Pipfile``.
+
+``pipenv install --dev``  
+    Install all dependencies, including dev.
+
+``pipenv install --system``
+    Use the system ``pip`` command to install packages into parent system. This
+    is useful for Docker containers, and deployment infrastructure (e.g. Heroku
+    does this).
+
+``pipenv install --system --deploy``
+    This will fail a build if the ``Pipfile.lock`` is out–of–date or Python
+    version is wrong, instead of generating a new one.
+
+``pipenv lock``              
+    To create a Pipfile.lock, which declares all dependencies and
+    sub-dependencies, their latest available versions, and the current hashes
+    for the downloaded files.
+    
+    We can use this to compile dependencies on our dev environment and deploy
+    the compiled ``Pipfile.lock`` to all production environments
+    for reproducible builds.
+
+``pipenv install --ignore-pipfile``
+    Ignore the ``Pipfile`` and install from the ``Pipfile.lock``.
+
+``pipenv install --skip-lock``
+    Ignore the ``Pipfile.lock`` and install from the ``Pipfile``. In addition,
+    do not write out a ``Pipfile.lock`` reflecting changes to the ``Pipfile``.
+
+``pipenv check``
+    To scan dependency graph for known security vulnerabilities.
+
+``pipenv check --style some_script.py``
+    To check code style with built-in Flake8.
+
+``pipenv run python some_script.py``
+
+``pipenv uninstall --all``
+    Purge all files from the virtual environment, but leave the ``Pipfile`` untouched.
+
+``pipenv uninstall --all-dev``
+    Remove all of the development packages from the virtual environment, and
+    remove them from the ``Pipfile``.
+
+``pipenv --rm``
+    Remove the virtualenv.
+
+For command line completion add to ``.bashrc``::
+
+    eval "$(pipenv --completion)" 
+
+
+Autoinstall Python
+------------------
+
+If ``pyenv`` is installed and configured, Pipenv will automatically ask if we
+want to install a required version of Python if we don’t already have it
+available on system.
+
+
+Autoloading of .env
+-------------------
+
+If a ``.env`` file is present in your project, ``pipenv shell`` and ``pipenv
+run`` will automatically load it.
+
+If ``.env`` file is located in a different path or has a different name we can
+set the ``PIPENV_DOTENV_LOCATION`` environment variable::
+
+    $ PIPENV_DOTENV_LOCATION=/path/to/.env pipenv shell
+
+To prevent pipenv from loading the ``.env`` file, set the
+``PIPENV_DONT_LOAD_ENV`` environment variable::
+
+    $ PIPENV_DONT_LOAD_ENV=1 pipenv shell
+
+
+Configuration With Environment Variables
+----------------------------------------
+https://docs.pipenv.org/advanced.html#configuration-with-environment-variables
+
+Pipenv options can be enabled via shell environment variables, for example:
+
+    PIPENV_VENV_IN_PROJECT
+        If set, use ``.venv`` in your project directory instead of the global
+        virtualenv manager pew.
+
+    PIPENV_NOSPIN
+        Disable terminal spinner, for cleaner logs. Automatically set in CI
+        environments.
+
+Pipenv’s underlying ``pew`` dependency will automatically honor the
+``WORKON_HOME`` environment variable::
+
+    export WORKON_HOME=~/.other_venvs_location
+
+To set environment variables on a per-project basis, we can use
+`direnv project <https://direnv.net/>`_.
+
+
+Working with platform-provided Python components
+------------------------------------------------
+
+It’s reasonably common for platform specific Python bindings for operating
+system interfaces to only be available through the system package manager, and
+hence unavailable for installation into virtual environments with pip. In these
+cases, the virtual environment can be created with access to the system
+site-packages directory::
+
+    $ pipenv --three --site-packages
+
+To ensure that all pip-installable components actually are installed into the
+virtual environment and system packages are only used for interfaces that don’t
+participate in Python-level dependency resolution at all, use the
+PIP_IGNORE_INSTALLED setting::
+
+    $ PIP_IGNORE_INSTALLED=1 pipenv install --dev
+
+
+
+===============================================================================
+pyenv
+===============================================================================
+https://github.com/pyenv/pyenv
+
+- Change the global Python version on a per-user basis.
+- Provide support for per-project Python versions.
+- Allow to override the Python version with an environment variable.
+- Search commands from multiple versions of Python at a time. This may be
+  helpful to test across Python versions with tox.
+
+It works by filling a ``shims`` directory with fake versions of the Python
+interpreter (plus other tools like ``pip`` and ``2to3``). When the system looks
+for a program named python, it looks inside the shims directory first, and uses
+the fake version, which in turn passes the command on to pyenv. Pyenv then
+works out which version of Python should be run based on environment variables,
+``.python-version`` files, and the global default.
+
+
+
+===============================================================================
+pew
+===============================================================================
+https://github.com/berdario/pew
+
+**Python Env Wrapper** is a set of commands to manage multiple virtual
+environments. Pew can create, delete and copy your environments, using a single
+command to switch to them wherever you are, while keeping them in a single
+(configurable) location.
+
+
+===============================================================================
+pipsi
+===============================================================================
+https://github.com/mitsuhiko/pipsi
+
+pipsi is a wrapper around virtualenv and pip which installs scripts provided by
+python packages into separate virtualenvs to shield them from your system and
+each other.
+
+
+
+===============================================================================
 Local debugging servers
 ===============================================================================
 
@@ -202,30 +442,40 @@ Or redirect output to file::
 
 
 
-IPython commands
+===============================================================================
+IPython
 ===============================================================================
 
 http://ipython.readthedocs.io/en/stable/interactive/magics.html
 
-=============== ==========================
-<object>?       Show info about object
-%who / %whos    Show namespace info
-%hist           History
-%pbd            Activate debugger
-=============== ==========================
+=================== ==========================
+``<object>?``       Show info about object
+``%who / %whos``    Show namespace info
+``%hist``           History
+``%pbd``            Activate debugger
+=================== ==========================
 
 
 
+===============================================================================
 Hints
 ===============================================================================
 
-Show path of command in the current environment::
+Find the user base binary directory::
+
+    python -m site --user-base
+
+To add the installed cli tools from a pip user install to user path::
+
+    python -c "import site; import os; print(os.path.join(site.USER_BASE, 'bin'))"
+
+Show path for python in the current environment::
 
     which python
 
 Find installation path of package::
 
-    python -c 'import flask; print(flask.__path__)'
+    python -c 'import sphinx; print(sphinx.__path__)'
 
 Virtual environment help::
     
