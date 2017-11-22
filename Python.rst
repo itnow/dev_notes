@@ -457,7 +457,6 @@ Or redirect output to file::
 ===============================================================================
 IPython
 ===============================================================================
-
 http://ipython.readthedocs.io/en/stable/interactive/magics.html
 
 =================== ==========================
@@ -466,6 +465,30 @@ http://ipython.readthedocs.io/en/stable/interactive/magics.html
 ``%hist``           History
 ``%pbd``            Activate debugger
 =================== ==========================
+
+
+
+===============================================================================
+Jupyter
+===============================================================================
+http://jupyter.org
+
+Install and start the notebook server::
+
+    $ python3 -m pip install jupyter
+    $ jupyter notebook
+
+
+
+===============================================================================
+Sphinx
+===============================================================================
+http://www.sphinx-doc.org/en/stable/
+
+::
+
+    $ python3 -m pip install sphinx
+    $ sphinx-quickstart
 
 
 
