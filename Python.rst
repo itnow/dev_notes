@@ -187,13 +187,17 @@ Usage::
     pip install -r requirements-to-freeze.txt --upgrade
     pip freeze > requirements.txt
 
-Command line completion in bash::
 
-    $ pip completion --bash >> ~/.profile
+Bash completion for pip
+-----------------------
 
-or add to ``.bashrc``::
+For command line completion run::
 
-    eval "$(pip completion --bash)"
+    $ pip completion --bash >> ~/.bash_completion
+
+or::
+
+    $ echo 'eval "$(pip completion --bash)"' >> ~/.bash_completion
 
 
 
@@ -299,9 +303,17 @@ Commands examples
 ``pipenv --rm``
     Remove the virtualenv.
 
-For command line completion add to ``.bashrc``::
 
-    eval "$(pipenv --completion)" 
+Bash completion for pipenv
+--------------------------
+
+For command line completion run::
+
+    $ pipenv --completion >> ~/.bash_completion
+
+or::
+
+    $ echo 'eval "$(pipenv --completion)"' >> ~/.bash_completion
 
 
 Autoinstall Python
