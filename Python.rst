@@ -385,48 +385,6 @@ PIP_IGNORE_INSTALLED setting::
 
 
 ===============================================================================
-pyenv
-===============================================================================
-https://github.com/pyenv/pyenv
-
-- Change the global Python version on a per-user basis.
-- Provide support for per-project Python versions.
-- Allow to override the Python version with an environment variable.
-- Search commands from multiple versions of Python at a time. This may be
-  helpful to test across Python versions with tox.
-
-It works by filling a ``shims`` directory with fake versions of the Python
-interpreter (plus other tools like ``pip`` and ``2to3``). When the system looks
-for a program named python, it looks inside the shims directory first, and uses
-the fake version, which in turn passes the command on to pyenv. Pyenv then
-works out which version of Python should be run based on environment variables,
-``.python-version`` files, and the global default.
-
-
-
-===============================================================================
-pew
-===============================================================================
-https://github.com/berdario/pew
-
-**Python Env Wrapper** is a set of commands to manage multiple virtual
-environments. Pew can create, delete and copy your environments, using a single
-command to switch to them wherever you are, while keeping them in a single
-(configurable) location.
-
-
-===============================================================================
-pipsi
-===============================================================================
-https://github.com/mitsuhiko/pipsi
-
-pipsi is a wrapper around virtualenv and pip which installs scripts provided by
-python packages into separate virtualenvs to shield them from your system and
-each other.
-
-
-
-===============================================================================
 Local debugging servers
 ===============================================================================
 
@@ -516,3 +474,72 @@ Virtual environment help::
     
     python3.6 -m venv -h
 
+
+
+===============================================================================
+Packages overview
+===============================================================================
+
+pyenv
+-------------------------------------------------------------------------------
+https://github.com/pyenv/pyenv
+
+- Change the global Python version on a per-user basis.
+- Provide support for per-project Python versions.
+- Allow to override the Python version with an environment variable.
+- Search commands from multiple versions of Python at a time. This may be
+  helpful to test across Python versions with tox.
+
+It works by filling a ``shims`` directory with fake versions of the Python
+interpreter (plus other tools like ``pip`` and ``2to3``). When the system looks
+for a program named python, it looks inside the shims directory first, and uses
+the fake version, which in turn passes the command on to pyenv. Pyenv then
+works out which version of Python should be run based on environment variables,
+``.python-version`` files, and the global default.
+
+
+pew
+-------------------------------------------------------------------------------
+https://github.com/berdario/pew
+
+**Python Env Wrapper** is a set of commands to manage multiple virtual
+environments. Pew can create, delete and copy your environments, using a single
+command to switch to them wherever you are, while keeping them in a single
+(configurable) location.
+
+
+pipsi
+-------------------------------------------------------------------------------
+https://github.com/mitsuhiko/pipsi
+
+pipsi is a wrapper around virtualenv and pip which installs scripts provided by
+python packages into separate virtualenvs to shield them from your system and
+each other.
+
+
+restview
+-------------------------------------------------------------------------------
+https://github.com/mgedmin/restview
+
+A viewer for ReStructuredText documents that renders them on the fly.
+
+Pass the document to restview, and it will launch a web server on
+``localhost:random-port`` and open a web browser. You can also pass the name of
+a directory, and restview will recursively look for files that end in ``.txt``
+or ``.rst`` and present you with a list. ::
+
+    $ pip install restview
+    $ restview -h
+    $ restview [options] filename-or-directory [...]
+
+
+httpie
+-------------------------------------------------------------------------------
+https://github.com/jakubroztocil/httpie
+
+HTTPie is a command line HTTP client::
+
+    $ pip install httpie
+    $ http --help
+    $ http [flags] [METHOD] URL [ITEM [ITEM]]
+    $ http PUT example.org X-API-Token:123 name=John
