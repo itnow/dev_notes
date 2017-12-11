@@ -10,6 +10,31 @@ Dockerfile
 
 
 
+.dockerignore file
+===============================================================================
+
+https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+Before the docker CLI sends the context to the docker daemon, it looks for a
+file named ``.dockerignore`` in the root directory of the context. If this file
+exists, the CLI modifies the context to exclude files and directories that
+match patterns in it.
+
+An example .dockerignore::
+
+    # List of patterns
+    .git
+    */temp*
+    */*/temp*
+    temp?
+    **/*.go
+    # Make exceptions to exclusions
+    *.md
+    !README*.md
+    README-secret.md
+
+
+
 ENTRYPOINT & CMD
 ===============================================================================
 
@@ -61,3 +86,17 @@ dockerized app running.
 If the consumer of the image cares what public port the container maps to they
 will pass the ``-p`` option when running the image, otherwise, docker will
 automatically assign a port for the container.
+
+Exposing ports is a way of documenting which ports are used, but
+**does not actually map or open any ports**. Exposing ports is optional.
+
+
+
+Hints
+===============================================================================
+
+To set localtime in container:
+
+.. code-block:: dockerfile
+    
+    RUN echo "Europe/London" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
