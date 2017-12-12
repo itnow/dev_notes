@@ -257,7 +257,7 @@ Commands examples
 ``pipenv install --dev SomePackage``
     Install package and update [dev-packages] of ``Pipfile``.
 
-``pipenv install --dev``  
+``pipenv install --dev``
     Install all dependencies, including dev.
 
 ``pipenv install --system``
@@ -269,11 +269,11 @@ Commands examples
     This will fail a build if the ``Pipfile.lock`` is out–of–date or Python
     version is wrong, instead of generating a new one.
 
-``pipenv lock``              
+``pipenv lock``
     To create a Pipfile.lock, which declares all dependencies and
     sub-dependencies, their latest available versions, and the current hashes
     for the downloaded files.
-    
+
     We can use this to compile dependencies on our dev environment and deploy
     the compiled ``Pipfile.lock`` to all production environments
     for reproducible builds.
@@ -292,6 +292,7 @@ Commands examples
     To check code style with built-in Flake8.
 
 ``pipenv run python some_script.py``
+    Spawns a command installed into the virtualenv.
 
 ``pipenv uninstall --all``
     Purge all files from the virtual environment, but leave the ``Pipfile`` untouched.
@@ -403,7 +404,7 @@ SMTP server
 -----------
 
 Run server and output received emails sent by the application to the console::
-    
+
     python -m smtpd -n -c DebuggingServer localhost:25
 
 Or redirect output to file::
@@ -471,7 +472,7 @@ Find installation path of package::
     python -c 'import sphinx; print(sphinx.__path__)'
 
 Virtual environment help::
-    
+
     python3.6 -m venv -h
 
 
