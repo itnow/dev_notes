@@ -3,8 +3,6 @@ Docker CE
 ###############################################################################
 https://docs.docker.com/
 
-.. note:: To detaching from the container without stopping: <ctrl-p,q>
-
 - `Command line overview`_
 - `Create images`_
 - `Run container`_
@@ -30,6 +28,8 @@ To get help on all available commands::
 
     $ docker help
     $ docker [COMMAND] [SUBCOMMAND] --help
+
+To detaching from the container without stopping: <ctrl-p,q>
 
 
 docker build [OPTIONS] PATH | URL | -
@@ -110,6 +110,8 @@ starts it using the specified command. It is equivalent to the API
 --tty, -t           Allocate a pseudo-TTY.
 --attach, -a        Attach to STDIN, STDOUT or STDERR.
 --network string    Connect a container to a network.
+--publish, -p       Publish a container’s port(s) to the host.
+--publish-all, -P   Publish all exposed ports to random ports.
 --restart string    Restart policy to apply when a container exits
                     (default "no").
 --rm                Automatically remove the container when it exits.
@@ -117,6 +119,14 @@ starts it using the specified command. It is equivalent to the API
     Set the PID Namespace mode for the container.
     ``container:<name|id>`` - joins another container's PID namespace.
     ``host`` - use the host's PID namespace inside the container.
+
+.. code-block:: bash
+
+    # NOTE: To not expose cointainer to outside world map to host's 127.0.0.1
+    # Detached, map container's 5555 to host's 5000 port
+    $ docker run -d -p 127.0.0.1:5000:5555 --name some_cont some_img
+    # Interactive, autoremove container after exit
+    $ docker run -it --rm -p 127.0.0.1:5000:5555 --name some_cont some_img
 
 
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
@@ -145,15 +155,11 @@ https://docs.docker.com/engine/reference/commandline/images/
 
 Show all top level images, their repository and tags, and their size.
 
---all, -a           Show all images (default hides intermediate images)
---digests           Show digests
---filter, -f        Filter output based on conditions provided
---no-trunc          Don’t truncate output
-
-.. code-block:: bash
-    
-    $ docker images java
-    $ docker images java:8
+--all, -a           Show all images (default hides intermediate images).
+--digests           Show digests.
+--filter, -f        Filter output based on conditions provided.
+--no-trunc          Don’t truncate output.
+--quiet, -q         Only show numeric IDs.
 
 
 docker ps [OPTIONS]
@@ -163,6 +169,8 @@ https://docs.docker.com/engine/reference/commandline/ps/
 List containers.
 
 --all, -a           Show all containers (default shows just running).
+--latest, -l        Show the latest created container (includes all states).
+--quiet, -q         Only display numeric IDs.
 --filter, -f        Filter output based on conditions provided.
 --no-trunc          Don’t truncate output.
 --size, -s          Display total file sizes.
@@ -182,6 +190,11 @@ Fetch the logs of a container.
 --timestamps, -t    Show timestamps.
 
 
+docker top CONTAINER [ps OPTIONS]
+---------------------------------
+Display the running processes of a container.
+
+
 docker rm [OPTIONS] CONTAINER [CONTAINER...]
 --------------------------------------------
 https://docs.docker.com/engine/reference/commandline/rm/
@@ -192,11 +205,12 @@ Remove one or more containers.
 
 .. code-block:: bash
 
-    $ docker rm redis
-    # Remove all stopped containers:
-    $ docker rm $(docker ps -a -q)
-    # Remove a container and its volumes
-    $ docker rm -v redis
+    # Remove a container and its volumes:
+    $ sudo docker rm -v redis
+    # Remove all containers, produce error for running containers:
+    $ sudo docker rm $(sudo docker ps -aq)
+    # Remove all non-running containers:
+    $ sudo docker rm $(sudo docker ps -aq -f status=exited)
 
 
 docker rmi [OPTIONS] IMAGE [IMAGE...]
@@ -207,6 +221,13 @@ Remove one or more images, using short or long ID, tag or digest.
 
 --force, -f	        Force removal of the image
 --no-prune	        Do not delete untagged parents
+
+.. code-block:: bash
+
+    # Delete all images:
+    $ sudo docker rmi $(sudo docker images -q)
+    # Delete all images forced:
+    $ sudo docker rmi -f $(sudo docker images -q)
 
 
 Some other commands
@@ -796,3 +817,38 @@ to standard output, so you will like to do something like::
     docker save 'dockerizeit/agent' > dk.agent.lastest.tar
 
 Then you can use ``docker load`` or ``docker import`` in a different host.
+
+
+Some old samples
+----------------
+
+.. code-block:: bash
+
+    sudo docker run -ti -v /var/www/docks:/var/www/docks \
+                        -v /var/www/d_logs:/home/logs \
+                        -v /var/www/docks/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf \
+                        -p 127.0.0.1:9000:9000 \
+                        --name php itnow/php5-fpm bash
+
+    # On first run for setup add
+    #    -e MYSQL_ROOT_PASSWORD=<some_root_pass>
+    # Add /my/custom/mysql.cnf with
+    #    -v /my/custom:/etc/mysql/conf.d
+    # for overwrite setting without rebuild image
+    sudo docker run -ti -v /var/www/d_mysql_dbs:/var/lib/mysql \
+                        -v /var/www/d_mysql_dumps:/home/dumps \
+                        -v /var/www/d_logs:/home/logs \
+                        -e MYSQL_ROOT_PASSWORD=hard_to_pass \
+                        -p 127.0.0.1:3306:3306 \
+                        --name mysql itnow/mysql
+
+    sudo docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/at/host/all-databases.sql
+
+    # Step in running container
+    sudo docker exec -ti mysql bash
+
+
+    docker run -d -v /var/www/d_mongo/db:/data/db \
+                  -v /var/www/d_logs:/var/log/mongodb \
+                  -p 127.0.0.1:27017:27017 \
+                  --name mongo itnow/mongo

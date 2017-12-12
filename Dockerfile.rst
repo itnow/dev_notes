@@ -34,9 +34,19 @@ An example .dockerignore::
     README-secret.md
 
 
-
-ENTRYPOINT & CMD
+ENTRYPOINT / CMD
 ===============================================================================
+https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact
+
+``CMD`` and ``ENTRYPOINT`` instructions define what command gets executed when
+running a container:
+
+- Dockerfile should specify at least one of ``CMD`` or ENTRYPOINT commands.
+- ``ENTRYPOINT`` should be defined when using the container as an executable.
+- ``CMD`` should be used as a way of defining default arguments for an
+  ``ENTRYPOINT`` command or for executing an ad-hoc command in a container.
+- ``CMD`` will be overridden when running the container with alternative
+  arguments.
 
 The ``ENTRYPOINT`` specifies a command that will always be executed when the
 container starts. It makes your dockerized application behave like a binary.
