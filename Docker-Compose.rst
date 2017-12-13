@@ -1,5 +1,5 @@
 ###############################################################################
-Docker Compose
+ Docker Compose
 ###############################################################################
 
 - `Subcommands short overview`_
@@ -10,7 +10,7 @@ Docker Compose
 
 
 ===============================================================================
-Subcommands short overview
+ Subcommands short overview
 ===============================================================================
 - CLI reference:
   https://docs.docker.com/compose/reference/
@@ -43,13 +43,13 @@ Subcommands short overview
 ``docker-compose up``
     Build the images if required and start the containers, also starts any
     linked services.
+``docker-compose up -d``
+    Starts the containers in the background and leaves them running,
+    print new container names.
 ``docker-compose up --no-deps``
     Don't start linked services.
 ``docker-compose up --no-start`` (**v1.17+**)
     Don't start the services after creating them.
-``docker-compose up -d``
-    Starts the containers in the background and leaves them running,
-    print new container names.
 ``docker-compose down``
     Stops containers and removes containers, networks, volumes, and images
     created by ``up``. Networks and volumes defined as ``external`` are never
@@ -58,7 +58,7 @@ Subcommands short overview
 
 
 ===============================================================================
-docker-compose.yml
+ docker-compose.yml
 ===============================================================================
 
 - Compose file version 3 reference:
@@ -71,7 +71,7 @@ docker-compose.yml
 
 
 ===============================================================================
-Install/Uninstall
+ Install/Uninstall
 ===============================================================================
 
 For the latest version check the Compose repository release page on GitHub:
@@ -101,7 +101,7 @@ To uninstall::
 
 
 ===============================================================================
-Difference between up/run/start
+ Difference between up/run/start
 ===============================================================================
 
 Typically, you want ``docker-compose up``. Use ``up`` to start or restart all the
@@ -120,3 +120,10 @@ exit status of the process in the container.
 
 The ``docker-compose start`` command is useful only to restart containers that
 were previously created, but were stopped. It never creates new containers.
+
+
+
+===============================================================================
+ Use in production
+===============================================================================
+https://docs.docker.com/compose/production/

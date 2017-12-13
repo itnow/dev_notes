@@ -233,6 +233,19 @@ Remove one or more images, using short or long ID, tag or digest.
 Some other commands
 -------------------
 
+docker network COMMAND
+    Manage networks.
+
+    =========================== ===============================================
+    docker network connect      Connect a container to a network.
+    docker network create       Create a network.
+    docker network disconnect   Disconnect a container from a network.
+    docker network inspect      Display detailed information on networks.
+    docker network ls           List networks.
+    docker network prune        Remove all unused networks.
+    docker network rm           Remove one or more networks.
+    =========================== ===============================================
+
 docker system df [OPTIONS]
     Show docker disk usage.
     
