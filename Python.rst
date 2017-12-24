@@ -1,10 +1,10 @@
 ###############################################################################
-Python Notes
+ Python Notes
 ###############################################################################
 
 
 ===============================================================================
-Compile Python 3.6
+ Compile Python 3.6
 ===============================================================================
 
 - https://github.com/python/cpython/blob/3.6/README.rst
@@ -92,7 +92,7 @@ So we can find related executables in ``/usr/local/bin/`` and run::
 
 
 ===============================================================================
-Linting
+ Linting
 ===============================================================================
 
 ::
@@ -106,7 +106,7 @@ Linting
 
 
 ===============================================================================
-Shebang
+ Shebang
 ===============================================================================
 
 A good choice is usually::
@@ -124,7 +124,7 @@ Define source code encoding for 2.x::
 
 
 ===============================================================================
-PIP
+ Pip
 ===============================================================================
 https://pip.pypa.io/en/stable/
 
@@ -202,7 +202,7 @@ or::
 
 
 ===============================================================================
-pipenv
+ Pipenv
 ===============================================================================
 - https://docs.pipenv.org/#pipenv-usage
 - https://github.com/kennethreitz/pipenv
@@ -386,18 +386,18 @@ PIP_IGNORE_INSTALLED setting::
 
 
 ===============================================================================
-Local debugging servers
+ Local debugging servers
 ===============================================================================
 
 HTTP server
 -----------
 
-::
+.. code-block:: bash
 
     # 3.x
-    python -m http.server
+    $ python -m http.server
     # 2.x
-    python -m SimpleHTTPServer
+    $ python -m SimpleHTTPServer
 
 
 SMTP server
@@ -405,16 +405,17 @@ SMTP server
 
 Run server and output received emails sent by the application to the console::
 
-    python -m smtpd -n -c DebuggingServer localhost:25
+    $ python -m smtpd -n -c DebuggingServer localhost:1025
+    $ sudo python -m smtpd -n -c DebuggingServer localhost:25
 
 Or redirect output to file::
 
-    python -m smtpd -n -c DebuggingServer localhost:25 >> mail.log
+    $ python -m smtpd -n -c DebuggingServer localhost:1025 >> mail.log
 
 
 
 ===============================================================================
-IPython
+ IPython
 ===============================================================================
 http://ipython.readthedocs.io/en/stable/interactive/magics.html
 
@@ -428,7 +429,7 @@ http://ipython.readthedocs.io/en/stable/interactive/magics.html
 
 
 ===============================================================================
-Jupyter
+ Jupyter
 ===============================================================================
 http://jupyter.org
 
@@ -440,7 +441,7 @@ Install and start the notebook server::
 
 
 ===============================================================================
-Sphinx
+ Sphinx
 ===============================================================================
 http://www.sphinx-doc.org/en/stable/
 
@@ -452,7 +453,7 @@ http://www.sphinx-doc.org/en/stable/
 
 
 ===============================================================================
-Hints
+ Hints
 ===============================================================================
 
 Find the user base binary directory::
@@ -478,7 +479,7 @@ Virtual environment help::
 
 
 ===============================================================================
-Packages overview
+ Packages overview
 ===============================================================================
 
 pyenv
