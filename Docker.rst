@@ -248,13 +248,13 @@ docker network COMMAND
 
 docker system df [OPTIONS]
     Show docker disk usage.
-    
+
     --verbose, -v       Show detailed information on space usage.
 
 docker system prune [OPTIONS]
     Remove all unused containers, volumes, networks and images (both dangling
     and unreferenced).
-    
+
     --all, -a           Remove all unused images not just dangling ones.
     --force, -f         Do not prompt for confirmation.
 
@@ -267,7 +267,7 @@ docker stats [OPTIONS] [CONTAINER...]
 
 docker history [OPTIONS] IMAGE
     https://docs.docker.com/engine/reference/commandline/history/
-    
+
     Show the history of an image.
 
 docker info [OPTIONS]
@@ -369,7 +369,7 @@ In foreground mode, ``docker run`` can start the process in the container and
 attach the console to the process’s standard input, output, and standard error.
 It can even pretend to be a TTY and pass along signals.
 
-If you do not specify ``-a`` then Docker will attach to both STDOUT/STDERR. 
+If you do not specify ``-a`` then Docker will attach to both STDOUT/STDERR.
 
 For interactive processes (like a shell), you must use ``-it`` together in
 order to allocate a tty for the container process.
@@ -488,7 +488,7 @@ Start a container with a bind mount::
     $ docker run -d -it --name devtest \
       --mount type=bind,source="$(pwd)"/app,target=/app \
       nginx:latest
-    
+
 and verify "Mounts" section::
 
     $ docker inspect devtest
@@ -532,12 +532,12 @@ connect to.
 - The **bridge** network represents the ``docker0`` network present in all
   Docker installations. Unless you specify otherwise with the ``docker run
   --network=<NETWORK>`` option, the Docker daemon connects containers to this
-  network **by default**. 
+  network **by default**.
 
 - The **none** network adds a container to a container-specific network stack.
   That container lacks a network interface. Use it to disable all incoming and
   outgoing networking::
-    
+
     $ docker run -ti --network=none --name=container1 busybox
 
 - The **host** network adds a container on the host’s network stack. As far as
@@ -702,7 +702,7 @@ or by re-tagging an existing local image (by image name or ID)::
     sudo docker tag <existing-image-name-or-id> <hub-user>/<repo-name>[:<tag>]
 
 or by to commit changes::
-    
+
     sudo docker commit <exiting-container> <hub-user>/<repo-name>[:<tag>]
 
 To log into the Hub from the command line::
@@ -754,7 +754,7 @@ Download ``.deb`` package::
 Install package::
 
     $ sudo apt install /tmp/docker.deb
-    
+
     # or alternative method:
     #   sudo dpkg --install /tmp/docker.deb
     #   sudo apt-get install -f
@@ -780,12 +780,12 @@ To enable/disable autostart on boot for **systemd**::
 To uninstall::
 
     $ sudo apt purge docker-ce
-    
+
     # or alternative method:
     #   sudo dpkg --purge docker-ce
 
 and delete all images, containers, and volumes::
-    
+
     $ sudo rm -rf /var/lib/docker
 
 To manage Docker as a non-root user
@@ -793,10 +793,10 @@ To manage Docker as a non-root user
 
     # Create the docker group.
     $ sudo groupadd docker
-    
+
     # Add your user to docker group.
     $ sudo usermod -aG docker <user_name>
-    
+
     # Log out and log back in.
 
 
@@ -813,7 +813,7 @@ You can modify the ``config.json`` file to control certain aspects of how the
 docker command behaves. For example, customize detach key sequence:
 
 .. code-block:: json
-    
+
     {
         "detachKeys": "ctrl-e,e",
     }
