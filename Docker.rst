@@ -832,6 +832,15 @@ to standard output, so you will like to do something like::
 Then you can use ``docker load`` or ``docker import`` in a different host.
 
 
+Some examples
+-------------
+
+.. code-bash:: bash
+
+    # Run shell in alpine container
+    $ sudo docker run -it --rm alpine /bin/sh
+
+
 Some old samples
 ----------------
 
