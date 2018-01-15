@@ -135,6 +135,10 @@ https://docs.docker.com/engine/reference/commandline/exec/
 
 Run a new command in a running container.
 
+.. code-block:: bash
+
+    $ docker exec -it alpine_cont /bin/sh
+
 
 docker attach [OPTIONS] CONTAINER
 ---------------------------------
