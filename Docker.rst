@@ -125,8 +125,14 @@ starts it using the specified command. It is equivalent to the API
     # NOTE: To not expose cointainer to outside world map to host's 127.0.0.1
     # Detached, map container's 5555 to host's 5000 port
     $ docker run -d -p 127.0.0.1:5000:5555 --name some_cont some_img
+    
     # Interactive, autoremove container after exit
     $ docker run -it --rm -p 127.0.0.1:5000:5555 --name some_cont some_img
+    
+    # "--mount" vs "--volume": "-v" is always create not existing dir on host
+    $ docker run -d --mount type=bind,src="$(pwd)"/data,dst=/data --name cont img
+    $ docker run -d -v "$(pwd)"/data:/data --name cont img
+    # Use `docker inspect` to verify that the bind mount was created correctly.
 
 
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
