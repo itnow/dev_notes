@@ -465,6 +465,31 @@ https://github.com/ervandew/supertab
 
 
 
+fugitive.vim
+------------
+https://github.com/tpope/vim-fugitive
+
+
+:Gstatus
+    Bring up the output of git-status in the preview window.
+    Run ``:h Gstatus`` for more info.
+
+:Gdiff [revision]
+    Perform a vimdiff against the current file in the given revision.
+
+
+
+vim-gitgutter
+-------------
+https://github.com/airblade/vim-gitgutter
+
+======= ===================================================
+]c      Jump to next hunk (change)
+[c      Jump to previous hunk (change)
+======= ===================================================
+
+
+
 ctrlp.vim
 ---------
 https://github.com/ctrlpvim/ctrlp.vim
@@ -516,8 +541,6 @@ Some other plugins
 - https://github.com/Yggdroot/indentLine
   (`json syntax conflicts <https://github.com/Yggdroot/indentLine/issues/140>`_)
 - https://github.com/nathanaelkane/vim-indent-guides
-- https://github.com/tpope/vim-fugitive
-- https://github.com/airblade/vim-gitgutter
 - https://github.com/tpope/vim-surround
 - https://github.com/vim-syntastic/syntastic
 - https://github.com/easymotion/vim-easymotion
