@@ -65,6 +65,11 @@ mtime
 Find
 -------------------------------------------------------------------------------
 
+- Security considerations:
+  https://www.gnu.org/software/findutils/manual/html_node/find_html/Security-Considerations-for-find.html
+- Deleting files:
+  https://www.gnu.org/software/findutils/manual/html_node/find_html/Deleting-Files.html
+
 Numeric arguments can be specified as:
 
 - ``+n`` for greater than n
