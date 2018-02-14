@@ -728,8 +728,8 @@ limits cells in the first column to only one line of text.
 To start a new row in a simple table without text in the first column in the
 processed output:
 
-- An empty comment (".."), which may be omitted from the processed output.
-- A backslash escape ("\") followed by a space.
+- An empty comment (``..``), which may be omitted from the processed output.
+- A backslash escape (``\``) followed by a space.
 
 The rightmost column is unbounded; text may continue past the edge of the
 table. However, it is recommended that borders be made long enough to contain
