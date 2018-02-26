@@ -366,7 +366,12 @@ Shell
 ===============================================================================
 
 =================== ===========================================================
-:!some-command      Runs external commands and displays their output.
+:!{command}         Run a shell command, shows the output and prompts before
+                    returning to the current buffer.
+:!                  Runs the last external command (from shell history).
+:!!                 Repeats the last command.
+:silent !{command}  Eliminates the need to hit enter after the command is done.
+:r !{command}       Puts the output of command into the current buffer.
 Ctrl+z              Will suspend the Vim process and get back to your shell.
 fg                  Will resume (bring to foreground) your suspended Vim.
 :sh                 Start a subshell.
@@ -442,7 +447,7 @@ Automatic installation and config example:
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
     " --sync flag is used to block the execution until the installer finishes.
-    
+
     call plug#begin('~/.vim/plugged')
     " Make sure you use single quotes
 
@@ -461,7 +466,7 @@ Automatic installation and config example:
 
     " Initialize plugin system
     call plug#end()
-    
+
     " Reload .vimrc and :PlugInstall to install plugins.
 
 If you're behind an HTTP proxy, you may need to add ``--insecure`` option to
@@ -599,7 +604,7 @@ jedi-vim
 https://github.com/davidhalter/jedi-vim
 
 .. code-block:: vim
-    
+
     " Jedi-vim
     "
     " Disable docstring preview window
