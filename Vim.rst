@@ -366,6 +366,7 @@ Shell
 ===============================================================================
 
 =================== ===========================================================
+:!some-command      Runs external commands and displays their output.
 Ctrl+z              Will suspend the Vim process and get back to your shell.
 fg                  Will resume (bring to foreground) your suspended Vim.
 :sh                 Start a subshell.
