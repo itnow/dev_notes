@@ -285,11 +285,17 @@ Commands examples
     Ignore the ``Pipfile.lock`` and install from the ``Pipfile``. In addition,
     do not write out a ``Pipfile.lock`` reflecting changes to the ``Pipfile``.
 
+``pipenv update --outdated``
+    List out–of–date dependencies (only if version not fixed).
+
+``pipenv run pip list -o``
+    Show any outdated packages.
+
+``pipenv update`` / ``pipenv update <pkg>``
+    Update all packages or specific package.
+
 ``pipenv check``
     To scan dependency graph for known security vulnerabilities.
-
-``pipenv check --style some_script.py``
-    To check code style with built-in Flake8.
 
 ``pipenv run python some_script.py``
     Spawns a command installed into the virtualenv.
