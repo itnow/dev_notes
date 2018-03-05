@@ -62,7 +62,7 @@ Creates a writeable container layer over the specified image and prepares
 it for running the specified command. This is similar to ``docker run -d``
 except the container is never started.
 
---name		        Assign a name to the container.
+--name              Assign a name to the container.
 -i, --interactive   Keep STDIN open even if not attached.
 -t, --tty           Allocate a pseudo-TTY.
 --network string    Connect a container to a network.
@@ -84,8 +84,8 @@ https://docs.docker.com/engine/reference/commandline/start/
 
 Start one or more stopped containers
 
---attach, -a		Attach STDOUT/STDERR and forward signals.
---interactive, -i	Attach container’s STDIN.
+--attach, -a        Attach STDOUT/STDERR and forward signals.
+--interactive, -i   Attach container’s STDIN.
 
 
 docker stop [OPTIONS] CONTAINER [CONTAINER...]
@@ -93,7 +93,7 @@ docker stop [OPTIONS] CONTAINER [CONTAINER...]
 The main process inside the container will receive SIGTERM, and after a
 grace period, SIGKILL.
 
---time, -t 10	    Seconds to wait for stop before killing it.
+--time, -t 10       Seconds to wait for stop before killing it.
 
 
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
@@ -104,7 +104,7 @@ https://docs.docker.com/engine/reference/commandline/run/
 starts it using the specified command. It is equivalent to the API
 ``create`` then ``start``.
 
---name		        Assign a name to the container.
+--name              Assign a name to the container.
 --detach, -d        Run container in background and print container ID.
 --interactive, -i   Keep STDIN open even if not attached.
 --tty, -t           Allocate a pseudo-TTY.
@@ -156,7 +156,10 @@ ENTRYPOINT/CMD process. This can appear as if the attach command is hung
 when in fact the process may simply not be interacting with the terminal at
 that time.
 
---no-stdin  		Do not attach STDIN.
+To detach from a container and leave it running use the ``CTRL-p, CTRL-q`` key
+sequence.
+
+--no-stdin          Do not attach STDIN.
 
 
 docker images [OPTIONS] [REPOSITORY[:TAG]]
@@ -192,11 +195,11 @@ https://docs.docker.com/engine/reference/commandline/logs/
 
 Fetch the logs of a container.
 
---details		    Show extra details provided to logs.
+--details           Show extra details provided to logs.
 --follow, -f        Follow log output.
---since		        Show logs since timestamp (e.g. 2013-01-02T13:23:37)
+--since             Show logs since timestamp (e.g. 2013-01-02T13:23:37)
                     or relative (e.g. 42m for 42 minutes).
---tail all	        Number of lines to show from the end of the logs.
+--tail all          Number of lines to show from the end of the logs.
 --timestamps, -t    Show timestamps.
 
 
@@ -229,8 +232,8 @@ https://docs.docker.com/engine/reference/commandline/rmi/
 
 Remove one or more images, using short or long ID, tag or digest.
 
---force, -f	        Force removal of the image
---no-prune	        Do not delete untagged parents
+--force, -f         Force removal of the image
+--no-prune          Do not delete untagged parents
 
 .. code-block:: bash
 
@@ -273,7 +276,7 @@ docker stats [OPTIONS] [CONTAINER...]
 
     Display a live stream of container(s) resource usage statistics.
 
-    --no-stream		    Disable streaming stats and only pull the first result
+    --no-stream         Disable streaming stats and only pull the first result
 
 docker history [OPTIONS] IMAGE
     https://docs.docker.com/engine/reference/commandline/history/
