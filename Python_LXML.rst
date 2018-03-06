@@ -25,21 +25,22 @@ completeness of these libraries with the simplicity of a native Python API,
 mostly compatible but superior to the well-known ElementTree API.
 
 
-The xpath() method
-------------------
+The .xpath() method
+-------------------
 
 http://lxml.de/xpathxslt.html#xpath
 
-lxml.etree supports the simple path syntax of the find, findall and findtext
-methods on ElementTree and Element, as known from the original ElementTree
-library (ElementPath). As an lxml specific extension, these classes also
-provide an xpath() method that supports expressions in the complete XPath
-syntax, as well as custom extension functions.
+lxml.etree supports the simple path syntax of the ``.find()``, ``.findall()``,
+``.iterfind()`` and ``.findtext()`` methods on ElementTree and Element, as
+known from the original ElementTree library (ElementPath). As an lxml specific
+extension, these classes also provide an ``.xpath()`` method that supports
+expressions in the **complete XPath syntax**, as well as custom extension
+functions.
 
-For ElementTree, the xpath method performs a global XPath query against
+For ElementTree, the ``.xpath()`` method performs a global XPath query against
 the document (if absolute) or against the root node (if relative).
 
-When xpath() is used on an Element, the XPath expression is evaluated against
+When ``.xpath()`` is used on an Element, the XPath expression is evaluated against
 the element (if relative) or against the root tree (if absolute).
 
 
@@ -62,17 +63,17 @@ ElementPath language in the same way ElementTree does, even using
 (almost) the same implementation. The API provides four methods here
 that you can find on Elements and ElementTrees:
 
-iterfind()
-    iterates over all Elements that match the path expression
+.iterfind()
+    Iterates over all Elements that match the path expression.
 
-findall()
-    returns a list of matching Elements
+.findall()
+    Returns a list of matching Elements.
 
-find()
-    efficiently returns only the first match
+.find()
+    Efficiently returns only the first match.
 
-findtext()
-    returns the .text content of the first match
+.findtext()
+    Returns the ``.text`` content of the first match.
 
 
 XPath Support in ElementTree
