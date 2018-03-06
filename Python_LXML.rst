@@ -48,8 +48,9 @@ the element (if relative) or against the root tree (if absolute).
 ElementTree library
 ===============================================================================
 
-http://effbot.org/zone/element-xpath.htm
-https://docs.python.org/3.5/library/xml.etree.elementtree.html#reference
+- http://effbot.org/zone/element-xpath.htm
+- https://docs.python.org/3.6/library/xml.etree.elementtree.html#reference
+- https://docs.python.org/3.6/library/xml.etree.elementtree.html#xml.etree.ElementTree.Element
 
 The ElementTree library comes with a simple XPath-like path language
 called ElementPath. The main difference is that you can use the
@@ -60,7 +61,7 @@ In addition to a full XPath implementation, lxml.etree supports the
 ElementPath language in the same way ElementTree does, even using
 (almost) the same implementation. The API provides four methods here
 that you can find on Elements and ElementTrees:
-        
+
 iterfind()
     iterates over all Elements that match the path expression
 
