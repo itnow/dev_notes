@@ -1180,9 +1180,11 @@ To set the swappiness to a different value::
     $ sudo sysctl vm.swappiness=10
 
 This setting will persist until the next reboot. To set this value
-automatically at restart add the line to ``/etc/sysctl.conf`` file:
+automatically at restart add the line directly to ``/etc/sysctl.conf`` file:
 
     vm.swappiness=10
+
+or to the new end-user file ``60-*.conf`` at ``/etc/sysctl.d/``.
 
 The RAM which is not occupied by running programs is used as disk cache, by
 decreasing swappiness, you increase the chance of a program not to be swapped
