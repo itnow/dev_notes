@@ -602,6 +602,14 @@ Remove user from named group::
 Manage Packages
 -------------------------------------------------------------------------------
 
+Install `.deb` package::
+
+    $ sudo apt install /tmp/docker.deb
+
+    # or alternative method:
+    sudo dpkg --install /tmp/docker.deb
+    sudo apt-get install -f
+
 List all files installed to your system by some package::
 
     $ dpkg --listfiles <package_name>
