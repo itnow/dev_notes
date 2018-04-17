@@ -23,6 +23,7 @@
     - `Aptitude`_
     - `Hold package versions`_
     - `Systemctl & Service`_
+    - `SSH Keys`_
 
 - `Utils`_
 
@@ -810,6 +811,33 @@ Wen you mask a service it will be linked to /dev/null, so manually or
 automatically other services can't active/enable it. (you should unmask it
 first).
 
+
+
+SSH Keys
+-------------------------------------------------------------------------------
+
+Generate keys::
+
+    $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/key_filename_rsa
+
+Add key to ``~/.ssh/config``::
+
+    Host short-alias
+        HostName        full.server.name
+        User            username-on-remote-machine
+        IdentityFile    ~/.ssh/private_key_file
+
+Transfer ``key_file.pub`` to target remote host.
+
+Specify the identity file for connection::
+
+    $ ssh -i ~/.ssh/private-key-file some-user@some.server.name
+
+To use only the authentication identity and certificate files explicitly
+configured in the ssh config files or passed on the ssh command-line set option
+in ``/etc/ssh/ssh_config``::
+
+    IdentitiesOnly yes
 
 
 
