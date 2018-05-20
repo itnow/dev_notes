@@ -14,7 +14,7 @@
     - `SS`_
     - `IPtables`_
     - `Fail2Ban`_
-    - `Other utils`_
+    - `Other network utils`_
 
 - `System`_
 
@@ -29,6 +29,7 @@
 
     - `Logrotate`_
     - `TAR`_
+    - `Other utils`_
 
 - `Drives`_
 
@@ -543,7 +544,7 @@ Use ``-v`` for verbose output::
 
 
 
-Other utils
+Other network utils
 -------------------------------------------------------------------------------
 
 iptraf
@@ -841,6 +842,7 @@ in ``/etc/ssh/ssh_config``::
 
 
 
+
 ===============================================================================
  Utils
 ===============================================================================
@@ -910,6 +912,16 @@ Extract files to a specific directory::
 Extact without first two levels of structure::
 
     $ tar --strip-components 2 -xpf archive.tar.gz -C some/path/
+
+
+
+Other utils
+-------------------------------------------------------------------------------
+
+System info::
+
+    $ inxi -F
+
 
 
 

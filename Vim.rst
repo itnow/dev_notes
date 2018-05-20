@@ -9,6 +9,21 @@
 
 
 
+Compile
+===============================================================================
+
+.. code-block:: bash
+
+    $ cd /usr/local/src
+    # Clone or download from https://github.com/vim/vim/releases
+    $ git clone https://github.com/vim/vim.git
+    $ cd vim/src
+    $ make distclean  # if you build Vim before
+    $ make
+    $ sudo make install
+
+
+
 Motion
 ===============================================================================
 
