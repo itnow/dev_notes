@@ -284,6 +284,8 @@ Windows split
 :only | :on
     Make current window the only one on the screen.
 
+
+
 Window resizing
 ===============================================================================
 ``:help window-resize``
@@ -313,6 +315,38 @@ For horizonal split use ``-``/``+`` instead of ``<``/``>``:
 - :[n]winc +
 - [n]CTRL-W -
 - [n]CTRL-W +
+
+
+
+Navigate between windows
+===============================================================================
+
+``CTRL-W j`` | ``CTRL-W <Down>`` | ``CTRL-W CTRL-J``
+    Move cursor to Nth window below current one. Uses the cursor position to
+    select between alternatives.
+
+``CTRL-W k`` | ``CTRL-W <Up>`` | ``CTRL-W CTRL-K``
+    Move cursor to Nth window above current one. Uses the cursor position to
+    select between alternatives.
+
+``CTRL-W h`` | ``CTRL-W <Left>`` | ``CTRL-W CTRL-H`` | ``CTRL-W <BS>``
+    Move cursor to Nth window left of current one. Uses the cursor position to
+    select between alternatives.
+
+``CTRL-W l`` | ``CTRL-W <Right>`` | ``CTRL-W CTRL-L``
+    Move cursor to Nth window right of current one. Uses the cursor position
+    to select between alternatives.
+
+``CTRL-W w`` | ``CTRL-W CTRL-W``
+    Without count: move cursor to window below/right of the current one. If
+    there is no window below or right, go to top-left window. With count: go to
+    Nth window (windows are numbered from top-left to bottom-right). When N is
+    larger than the number of windows go to the last window.
+
+``CTRL-W W``
+    Without count: move cursor to window above/left of current one. If there
+    is no window above or left, go to bottom-right window. With count: go to
+    Nth window, like with CTRL-W w.
 
 
 
@@ -374,6 +408,23 @@ horizontally split windows. ``CTRL-W H`` does it the other way around.
     contents is used for the new window.
 
     Not available when compiled without the ``|+vertsplit|`` feature.
+
+
+
+Terminal
+===============================================================================
+
+``:help terminal``
+
+Run a terminal emulator in a vim window. To run a shell::
+
+    :term bash
+
+Or to run build command::
+
+    :term make myprogram
+
+Use ``CTRL-W w`` to navigate between windows. See ``:help terminal-typing``.
 
 
 
