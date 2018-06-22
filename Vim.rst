@@ -19,7 +19,14 @@ Compile
     $ git clone https://github.com/vim/vim.git
     $ cd vim/src
     $ make distclean  # if you build Vim before
-    $ make
+
+    $ ./configure \
+        --enable-pythoninterp=dynamic \
+        --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+        --enable-python3interp=dynamic \
+        --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu
+
+    $ sudo make
     $ sudo make install
 
 
