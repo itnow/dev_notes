@@ -1051,6 +1051,10 @@ Watch the status of a syncing drive (Ctrl+c to stop)::
 SMART
 -------------------------------------------------------------------------------
 
+Show device SMART health status::
+
+    $ sudo smartctl -H /dev/sda
+
 Display detailed SMART information for drive::
 
     $ sudo smartctl -a /dev/sda
@@ -1064,6 +1068,10 @@ Run tests (the most useful is "long")::
     $ sudo smartctl -t short /dev/sda
     $ sudo smartctl -t conveyance /dev/sda
     $ sudo smartctl -t long /dev/sda
+
+Test HDD for bad sectors::
+
+    $ badblocks -v /dev/sdc > /tmp/bad-sdc.txt
 
 
 
