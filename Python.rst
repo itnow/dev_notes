@@ -131,6 +131,7 @@ https://pip.pypa.io/en/stable/
 =========================================== ===================================
 ``pip install SomePackage==1.0.4``          Install specific version.
 ``pip install 'SomePackage>=1.0.4'``        Install minimum version.
+``pip install 'SomePackage>=1.2,<=1.5'``    Install within min & max versions.
 ``pip install -U (--upgrade) SomePackage``  Upgrade to the latest version.
 ``pip list -o (--outdated)``                List outdated packages.
 
