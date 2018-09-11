@@ -24,6 +24,7 @@
     - `Hold package versions`_
     - `Systemctl & Service`_
     - `SSH Keys`_
+    - `Enable Hibernate`_
 
 - `Utils`_
 
@@ -840,6 +841,28 @@ in ``/etc/ssh/ssh_config``::
 
     IdentitiesOnly yes
 
+
+
+Enable Hibernate
+-------------------------------------------------------------------------------
+
+Enable hibernate in menu::
+
+    $ sudo vim /var/lib/polkit-1/localauthority/10-vendor.d/com.ubuntu.desktop.pkla
+
+    [Disable hibernate by default in upower]
+    ResultActive=yes                                                                                                                            
+
+    [Disable hibernate by default in logind]
+    ResultActive=yes
+
+Append `resume=` with swap partition UUID to the grub (`/etc/default/grub`)
+and update grub::
+
+    $ sudo vim /etc/default/grub
+    # Edit line to:
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash resume=UUID=97e78c77-5ba9-7207-9fe1-c7f585d3efd7"
+    $ sudo update-grub
 
 
 
