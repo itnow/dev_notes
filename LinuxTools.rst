@@ -856,7 +856,7 @@ Enable hibernate in menu::
     [Disable hibernate by default in logind]
     ResultActive=yes
 
-Append `resume=` with swap partition UUID to the grub (`/etc/default/grub`)
+Append ``resume=`` with swap partition UUID to the grub (``/etc/default/grub``)
 and update grub::
 
     $ sudo vim /etc/default/grub
