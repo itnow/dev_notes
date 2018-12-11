@@ -489,6 +489,31 @@ Virtual environment help::
  Packages overview
 ===============================================================================
 
+line_profiler and kernprof
+-------------------------------------------------------------------------------
+https://github.com/rkern/line_profiler
+
+**line_profiler** is a module for doing line-by-line profiling of functions.
+**kernprof** is a convenient script for running either line_profiler or the
+Python standard library's cProfile or profile modules, depending on what is
+available.
+
+.. code-block:: bash
+
+    $ pip install line_profiler
+
+.. code:: python
+
+    @profile
+    def slow_function(a, b, c):
+        ...
+
+.. code-block:: bash
+
+    $ kernprof -l sg-sb run -p 5005 --without-threads
+    $ python -m line_profiler sg-sb.lprof
+
+
 pyenv
 -------------------------------------------------------------------------------
 https://github.com/pyenv/pyenv
