@@ -79,7 +79,7 @@ https://github.com/docker/compose/releases
 
 Download the Docker Compose binary::
 
-    sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
 Apply executable permissions to the binary::
 
@@ -88,7 +88,7 @@ Apply executable permissions to the binary::
 Optionally, install command completion for the bash to
 ``/etc/bash_completion.d/``::
 
-    sudo curl -L https://raw.githubusercontent.com/docker/compose/1.17.1/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+    sudo curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
 Test the installation::
 

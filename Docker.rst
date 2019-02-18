@@ -762,7 +762,7 @@ Install Docker
 
 Download ``.deb`` package::
 
-    $ wget -O /tmp/docker.deb https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.09.0~ce-0~ubuntu_amd64.deb
+    $ wget -O /tmp/docker.deb https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce_18.09.2~3-0~ubuntu-bionic_amd64.deb
 
 Install package::
 
