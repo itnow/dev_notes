@@ -514,6 +514,20 @@ available.
     $ python -m line_profiler sg-sb.lprof
 
 
+future
+-------------------------------------------------------------------------------
+https://python-future.org
+
+You can use ``future`` to help to port your code from Python 2 to Python 3
+today – and still have it run on Python 2. If you already have Python 3 code,
+you can instead use ``future`` to offer Python 2 compatibility with almost no
+extra work::
+
+    $ pasteurize -a some/path/to/file_or_dir
+    $ pasteurize -w some/path/to/file_or_dir
+
+
+
 pyenv
 -------------------------------------------------------------------------------
 https://github.com/pyenv/pyenv
