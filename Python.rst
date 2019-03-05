@@ -526,7 +526,7 @@ extra work::
     $ pasteurize -a some/path/to/file_or_dir
     $ pasteurize -w some/path/to/file_or_dir
 
-Example of universal compatible  imports for Python 2 module::
+Example of universal compatible imports for Python 2 module::
 
     # coding: utf-8
     from __future__ import absolute_import, division, print_function, unicode_literals
