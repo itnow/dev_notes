@@ -409,7 +409,7 @@ route                ip r (ip route)
 ==================== ==========================================================
 
 Show / manipulate routing, devices, policy routing and tunnels. Show host’s
-network stack  on the host::
+network stack on the host::
 
     $ ip addr show
     $ ip a
@@ -812,6 +812,12 @@ Mask or unmask a service::
 Wen you mask a service it will be linked to /dev/null, so manually or
 automatically other services can't active/enable it. (you should unmask it
 first).
+
+List timer units currently in memory, ``NEXT`` shows the next time the timer
+will run, ``ACTIVATES`` shows the name the service the timer activates when it
+runs::
+
+    $ systemctl list-timers
 
 
 
