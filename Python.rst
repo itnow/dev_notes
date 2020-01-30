@@ -4,12 +4,12 @@
 
 
 ===============================================================================
- Compile Python 3.6
+ Compile Python 3.7
 ===============================================================================
 
-- https://github.com/python/cpython/blob/3.6/README.rst
+- https://github.com/python/cpython/blob/3.7/README.rst
 - https://docs.python.org/3/using/unix.html#building-python
-- Python-3.6.3/README.rst
+- Python-3.7.6/README.rst
 
 
 If we intend to install multiple versions of Python using the same installation
@@ -53,9 +53,10 @@ Compile steps
 
 Get the source code::
 
-    wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
-    tar xvf Python-3.6.3.tar.xz
-    cd Python-3.6.3
+    cd /usr/local/src
+    wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tar.xz
+    tar xvf Python-3.7.6.tar.xz
+    cd Python-3.7.6
 
 Configuration options and caveats for specific Unix platforms are extensively
 documented in the README.rst.
@@ -85,9 +86,9 @@ to the same place as stdout::
 By default files installed with ``prefix=/usr/local``. See more in Makefile.
 So we can find related executables in ``/usr/local/bin/`` and run::
 
-    /usr/local/bin/python3.6
+    /usr/local/bin/python3.7
     # or simpy
-    python3.6
+    python3.7
 
 
 
