@@ -4,7 +4,19 @@
 
 
 ===============================================================================
- Compile Python 3.7
+ Install from PPA
+===============================================================================
+
+::
+    $ sudo add-apt-repository ppa:deadsnakes/ppa
+    $ sudo apt update
+    $ sudo apt install python3.8 python3.8-venv
+    $ python3.8 --version
+
+
+
+===============================================================================
+ Compile Python
 ===============================================================================
 
 - https://github.com/python/cpython/blob/3.7/README.rst

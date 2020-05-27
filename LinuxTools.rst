@@ -826,14 +826,16 @@ SSH Keys
 
 Generate keys::
 
-    $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/key_filename_rsa
+    $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
 
 Add key to ``~/.ssh/config``::
 
-    Host short-alias
-        HostName        full.server.name
-        User            username-on-remote-machine
-        IdentityFile    ~/.ssh/private_key_file
+    Host short-alias-name
+        HostName                    full.server.name
+        Port                        22
+        User                        username-on-remote-machine
+        PreferredAuthentications    publickey
+        IdentityFile                ~/.ssh/id_rsa
 
 Transfer ``key_file.pub`` to target remote host.
 
@@ -857,7 +859,7 @@ Enable hibernate in menu::
     $ sudo vim /var/lib/polkit-1/localauthority/10-vendor.d/com.ubuntu.desktop.pkla
 
     [Disable hibernate by default in upower]
-    ResultActive=yes                                                                                                                            
+    ResultActive=yes
 
     [Disable hibernate by default in logind]
     ResultActive=yes
