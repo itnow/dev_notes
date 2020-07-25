@@ -879,9 +879,11 @@ and update grub::
 Snap
 -------------------------------------------------------------------------------
 
-$ snap info pycharm-professional
-$ sudo snap refresh pycharm-professional --channel=latest/stable --classic
-$ sudo snap refresh pycharm-professional --channel=2019.2/stable --classic
+::
+
+    $ snap info pycharm-professional
+    $ sudo snap refresh pycharm-professional --channel=latest/stable --classic
+    $ sudo snap refresh pycharm-professional --channel=2019.2/stable --classic
 
 
 
