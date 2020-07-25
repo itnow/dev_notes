@@ -25,6 +25,8 @@
     - `Systemctl & Service`_
     - `SSH Keys`_
     - `Enable Hibernate`_
+    - `Snap`_
+    - `Kernel parameters`_
 
 - `Utils`_
 
@@ -874,6 +876,35 @@ and update grub::
 
 
 
+Snap
+-------------------------------------------------------------------------------
+
+$ snap info pycharm-professional
+$ sudo snap refresh pycharm-professional --channel=latest/stable --classic
+$ sudo snap refresh pycharm-professional --channel=2019.2/stable --classic
+
+
+
+Kernel parameters
+-------------------------------------------------------------------------------
+
+``sysctl`` is used to modify kernel parameters at runtime. The parameters available
+are those listed under ``/proc/sys/``. We can use ``sysctl`` to both read
+and write sysctl data.
+
+At boot, ``systemd-sysctl.service`` reads configuration files from the ``/etc/sysctl.d``
+to configure ``sysctl`` kernel parameters.
+
+To see current values of params::
+
+    $ sudo sysctl fs.inotify.max_user_watches
+
+To apply changes::
+
+    $ sudo sysctl -p --system
+
+
+
 ===============================================================================
  Utils
 ===============================================================================
@@ -1279,3 +1310,9 @@ out, but at the same time decrease the size of disk cache, which can make disk
 access slower. **So the effects of this setting on the actual performance are not
 that straightforward**.
 
+Enable/disable devices and files for paging and swappin.
+Use flags ``-v``, ``--verbose`` to be verbose. ``-a``, ``--all`` for all devices
+marked as ‘‘swap’’ in ``/etc/fstab``::
+
+    $ sudo swapoff -a
+    $ sudo swapon -a
