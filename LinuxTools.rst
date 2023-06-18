@@ -784,6 +784,7 @@ about the actual init system being used::
     $ systemctl stop dovecot.socket
     $ systemctl mask dovecot.socket
     $ systemctl enable dovecot.service
+    $ systemctl disable dovecot.service
     $ systemctl start dovecot.service
     $ systemctl status dovecot.service
 
@@ -829,6 +830,7 @@ SSH Keys
 Generate keys::
 
     $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
+    $ ssh-keygen -t rsa-sha2-512 -b 4096 -f ~/.ssh/id_rsa2
 
 Add key to ``~/.ssh/config``::
 

@@ -106,6 +106,8 @@ Change text
   or the current value of "tabstop" (``:help retab``). ``:retab`` accepts
   a range and works with selected lines too.
 
+- In normal mode, typing ``gg=G`` will reindent the entire file.
+
 =========== =======================================================================
 C           Change to the end of the line
 cc          Change the whole line
